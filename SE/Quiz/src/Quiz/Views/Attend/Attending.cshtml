@@ -1,0 +1,39 @@
+﻿@model Quiz.Models.AttendQuizViewModels.AttendingViewModel
+@{
+    ViewData["Title"] = "Attend Quiz";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Submit">
+    <div class="form-horizontal">
+        <h4>Attend Quiz</h4>
+        <hr />
+        <div class="form-group">
+            <label class="col-md-2 control-label">@ViewBag.Ten</label>
+            <input type="hidden" asp-for="DeThiId" value="@Model.DeThiId" />
+        </div>
+        @{
+            int count = 0;
+            foreach (var item in Model.Questions)
+            {
+                <input asp-for="Questions[count].CauHoiId" type="hidden" />
+                <div class="form-group">
+                    <label>@(count + 1).ToString(). @item.NoiDungCauHoi</label> <br />
+                    <div style="padding-left: 30px;">
+                        @foreach (var ai in item.DapAns)
+                        {
+                            @*<input name="Model.Questions[count].SelectedDapAn" type="radio" value="@ai.DapAnId" id="@ai.DapAnId" /> @ai.NoiDung <br />*@
+                            @Html.RadioButtonFor(m => m.Questions[count].SelectedDapAn, ai.DapAnId) @ai.NoiDung <br />
+                        }
+                    </div>
+                </div>
+                count++;
+            }
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>

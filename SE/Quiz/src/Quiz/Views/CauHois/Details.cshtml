@@ -1,0 +1,59 @@
+@model Quiz.Models.CauHoi
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Question of @Model.Nhom.Ten</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDung)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NoiDung)
+        </dd>
+    </dl>
+    <div>
+        <a asp-controller="DapAns" asp-action="Create" asp-route-id="@Model.CauHoiId">Create New Answer</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Is Correct
+                </th>
+                <th>
+                    Content
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.DapAns)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsTrue)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoiDung)
+                    </td>
+                    <td>
+                        @*<a asp-controller="DapAns" asp-action="Edit" asp-route-id="@item.DapAnId">Edit</a> |*@
+                        @*<a asp-controller="DapAns" asp-action="Details" asp-route-id="@item.DapAnId">Details</a> |*@
+                        <a asp-controller="DapAns" asp-action="Delete" asp-route-id="@item.DapAnId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CauHoiId">Edit</a> |
+    <a asp-controller="Nhoms" asp-action="Details" asp-route-id="@Model.NhomId">Back to List</a>
+</div>

@@ -1,0 +1,108 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Quiz.Models.DeThiViewModels.PickQuestionViewModel
+
+@{
+    ViewData["Title"] = "Pick Question";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form id="mainForm" method="post">
+    <h4>Pick Question For Quiz</h4>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Quiz's Name
+        </dt>
+        <dd>
+            @ViewBag.DeThiName
+        </dd>
+    </dl>
+
+    <div>
+        <a asp-action="Details" asp-route-id="@Model.DeThiId">Back To List</a>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SelectedNhom" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <select asp-for="SelectedNhom" class="form-control" asp-items="@ViewBag.Nhoms" onchange="FillCauHois()"></select>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Question
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="CauHois">
+            @foreach (var item in ViewBag.CauHois)
+            {
+                <tr>
+                    <td>
+                        <p>@item.NoiDung</p>
+                    </td>
+                    <td>
+                        <input type="button" class="form-control" value="Add" onclick="submitform(@item.CauHoiId)" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <input type="hidden" asp-for="DeThiId" value="@Model.DeThiId" />
+    <input id="selectedCauHoi" type="hidden" asp-for="CauHoiId" />
+
+    <div>
+    </div>
+</form>
+
+@{
+}
+@section Scripts {
+    <script>
+        function FillCauHois() {
+            var nhomId = $('#SelectedNhom').val();
+            $("#CauHois").html("");
+            $.ajax({
+                url: '/DeThis/FillCauHois',
+                type: "GET",
+                dataType: "JSON",
+                data: { id: nhomId },
+                success: function (cauHois) {
+                    $("#CauHois").html(""); // clear before appending new list
+                    $.each(cauHois, function (i, cauhoi) {
+                        $("#CauHois")
+                            .append($('<tr></tr>')
+                                .append($('<td></td>').html(String.format('<p>{0}</p>',cauhoi.noiDung)))
+                                .append($('<td></td>')
+                                    .append($('<input type="button" class="form-control" value="Add" />').attr('onclick', String.format('submitform({0})', cauhoi.cauHoiId)))
+                                    )
+                                )
+                    });
+                }
+            });
+        }
+        function submitform(id) {
+            document.getElementById('mainForm').setAttribute('action', 'PickQuestion');
+            document.getElementById('selectedCauHoi').setAttribute('data-val', id);
+            document.getElementById('selectedCauHoi').setAttribute('value', id);
+            document.getElementById('mainForm').submit();
+        }
+        String.format = function () {
+            var s = arguments[0];
+            for (var i = 0; i < arguments.length - 1; i++) {
+                var reg = new RegExp("\\{" + i + "\\}", "gm");
+                s = s.replace(reg, arguments[i + 1]);
+            }
+            return s;
+        }
+    </script>
+}

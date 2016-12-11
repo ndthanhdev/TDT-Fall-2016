@@ -1,0 +1,54 @@
+@model Quiz.Models.NhomViewModels.DetailViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Nhom</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenNhom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenNhom)
+        </dd>
+    </dl>
+    <p>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Questions for @Html.DisplayFor(model => model.TenNhom) -
+                    <a asp-controller="CauHois" asp-action="Create" asp-route-id="@Model.NhomId">Create New Question</a>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.CauHois)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoiDung)
+                    </td>
+                    <td>
+                        <a asp-controller="CauHois" asp-action="Edit" asp-route-id="@item.CauHoiId">Edit</a> |
+                        <a asp-controller="CauHois" asp-action="Details" asp-route-id="@item.CauHoiId">Details</a> |
+                        <a asp-controller="CauHois" asp-action="Delete" asp-route-id="@item.CauHoiId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.NhomId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

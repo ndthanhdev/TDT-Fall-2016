@@ -1,0 +1,29 @@
+@model Quiz.Models.CauHoi
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CauHoi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDung)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NoiDung)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-controller="Nhoms" asp-action="Details" asp-route-id="@Model.NhomId">Back to List</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,21 @@
+﻿@model Quiz.Models.AttendQuizViewModels.IndexViewModel
+@{
+    ViewData["Title"] = "Attend Quiz";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Attending">
+    <div class="form-horizontal">
+        <h4>Attend Quiz</h4>
+        <hr />
+        <div class="form-group">
+            <label asp-for="SelectedDeThi" class="col-md-2 control-label"></label>
+            <div class="col-md-4">
+                <input asp-for="SelectedDeThi" class="form-control" />
+            </div>
+            <div class="col-md-2">
+                <input type="submit" class="form-control" value="Attend Now" />
+            </div>
+        </div>
+    </div>
+</form>

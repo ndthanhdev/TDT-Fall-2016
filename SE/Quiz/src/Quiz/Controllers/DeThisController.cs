@@ -29,7 +29,7 @@ namespace Quiz.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DeThiId,Ten")] DeThi deThi)
+        public async Task<IActionResult> Create([Bind("DeThiId,Ten,ThoiGian")] DeThi deThi)
         {
             if (ModelState.IsValid)
             {

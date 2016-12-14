@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Quiz.Data;
-using System;
 
 namespace Quiz.Migrations
 {
@@ -266,6 +267,11 @@ namespace Quiz.Migrations
                 {
                     b.Property<int>("DeThiId")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Ten")
+                        .IsRequired();
+
+                    b.Property<TimeSpan>("ThoiGian");
 
                     b.HasKey("DeThiId");
 

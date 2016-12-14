@@ -1,17 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Quiz.Data;
 
-namespace Quiz.Data.Migrations
+namespace Quiz.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161211152806_m0")]
+    partial class m0
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.0.0-rc3")
+                .HasAnnotation("ProductVersion", "1.0.1")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -170,6 +173,125 @@ namespace Quiz.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("Quiz.Models.BaiLam", b =>
+                {
+                    b.Property<int>("BaiLamId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("DeThiId");
+
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
+                    b.HasKey("BaiLamId");
+
+                    b.HasIndex("DeThiId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("BaiLams");
+                });
+
+            modelBuilder.Entity("Quiz.Models.CauHoi", b =>
+                {
+                    b.Property<int>("CauHoiId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("NhomId");
+
+                    b.Property<string>("NoiDung")
+                        .IsRequired();
+
+                    b.HasKey("CauHoiId");
+
+                    b.HasIndex("NhomId");
+
+                    b.ToTable("CauHois");
+                });
+
+            modelBuilder.Entity("Quiz.Models.CauHoiDeThi", b =>
+                {
+                    b.Property<int>("CauHoiDeThiId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CauHoiId");
+
+                    b.Property<int>("DeThiId");
+
+                    b.HasKey("CauHoiDeThiId");
+
+                    b.HasIndex("CauHoiId");
+
+                    b.HasIndex("DeThiId");
+
+                    b.ToTable("CauHoiDeThis");
+                });
+
+            modelBuilder.Entity("Quiz.Models.ChiTietBaiLam", b =>
+                {
+                    b.Property<int>("ChiTietBaiLamId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("BaiLamId");
+
+                    b.Property<int>("DapAnId");
+
+                    b.HasKey("ChiTietBaiLamId");
+
+                    b.HasIndex("BaiLamId");
+
+                    b.HasIndex("DapAnId");
+
+                    b.ToTable("ChiTietBaiLams");
+                });
+
+            modelBuilder.Entity("Quiz.Models.DapAn", b =>
+                {
+                    b.Property<int>("DapAnId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CauHoiId");
+
+                    b.Property<bool>("IsTrue");
+
+                    b.Property<string>("NoiDung")
+                        .IsRequired();
+
+                    b.HasKey("DapAnId");
+
+                    b.HasIndex("CauHoiId");
+
+                    b.ToTable("DapAns");
+                });
+
+            modelBuilder.Entity("Quiz.Models.DeThi", b =>
+                {
+                    b.Property<int>("DeThiId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Ten")
+                        .IsRequired();
+
+                    b.Property<TimeSpan>("ThoiGian");
+
+                    b.HasKey("DeThiId");
+
+                    b.ToTable("DeThis");
+                });
+
+            modelBuilder.Entity("Quiz.Models.Nhom", b =>
+                {
+                    b.Property<int>("NhomId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Ten")
+                        .IsRequired();
+
+                    b.HasKey("NhomId");
+
+                    b.ToTable("Nhoms");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole")
@@ -204,6 +326,59 @@ namespace Quiz.Data.Migrations
                     b.HasOne("Quiz.Models.ApplicationUser")
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Quiz.Models.BaiLam", b =>
+                {
+                    b.HasOne("Quiz.Models.DeThi", "DeThi")
+                        .WithMany("BaiLams")
+                        .HasForeignKey("DeThiId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Quiz.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Quiz.Models.CauHoi", b =>
+                {
+                    b.HasOne("Quiz.Models.Nhom", "Nhom")
+                        .WithMany("CauHois")
+                        .HasForeignKey("NhomId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Quiz.Models.CauHoiDeThi", b =>
+                {
+                    b.HasOne("Quiz.Models.CauHoi", "CauHoi")
+                        .WithMany()
+                        .HasForeignKey("CauHoiId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Quiz.Models.DeThi", "DeThi")
+                        .WithMany("CauHoiDeThis")
+                        .HasForeignKey("DeThiId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Quiz.Models.ChiTietBaiLam", b =>
+                {
+                    b.HasOne("Quiz.Models.BaiLam")
+                        .WithMany("ChiTietBaiLams")
+                        .HasForeignKey("BaiLamId");
+
+                    b.HasOne("Quiz.Models.DapAn", "DapAn")
+                        .WithMany()
+                        .HasForeignKey("DapAnId");
+                });
+
+            modelBuilder.Entity("Quiz.Models.DapAn", b =>
+                {
+                    b.HasOne("Quiz.Models.CauHoi", "CauHoi")
+                        .WithMany("DapAns")
+                        .HasForeignKey("CauHoiId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

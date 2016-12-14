@@ -1,56 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Quiz.Migrations
 {
-    public partial class mi1 : Migration
+    public partial class m0 : Migration
     {
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "AspNetRoleClaims");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserClaims");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserLogins");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserRoles");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserTokens");
-
-            migrationBuilder.DropTable(
-                name: "CauHoiDeThis");
-
-            migrationBuilder.DropTable(
-                name: "ChiTietBaiLams");
-
-            migrationBuilder.DropTable(
-                name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "BaiLams");
-
-            migrationBuilder.DropTable(
-                name: "DapAns");
-
-            migrationBuilder.DropTable(
-                name: "DeThis");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "CauHois");
-
-            migrationBuilder.DropTable(
-                name: "Nhoms");
-        }
-
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -111,7 +67,9 @@ namespace Quiz.Migrations
                 columns: table => new
                 {
                     DeThiId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Ten = table.Column<string>(nullable: false),
+                    ThoiGian = table.Column<TimeSpan>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -416,6 +374,51 @@ namespace Quiz.Migrations
                 name: "IX_DapAns_CauHoiId",
                 table: "DapAns",
                 column: "CauHoiId");
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "AspNetRoleClaims");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserClaims");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserLogins");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserRoles");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "CauHoiDeThis");
+
+            migrationBuilder.DropTable(
+                name: "ChiTietBaiLams");
+
+            migrationBuilder.DropTable(
+                name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "BaiLams");
+
+            migrationBuilder.DropTable(
+                name: "DapAns");
+
+            migrationBuilder.DropTable(
+                name: "DeThis");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "CauHois");
+
+            migrationBuilder.DropTable(
+                name: "Nhoms");
         }
     }
 }

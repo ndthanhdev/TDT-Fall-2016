@@ -63,7 +63,24 @@ namespace Quiz.Controllers
         public IActionResult Index()
         {
             var userId = _userManager.GetUserId(HttpContext.User);
-            var baiLams = _context.BaiLams.Where(m => m.UserId == userId).ToList();
+
+            var vm = new IndexViewModel();
+            vm.BaiLamViewItems = new List<BaiLamViewItem>();
+
+            var baiLams = _context.BaiLams
+                .Include(m=>m.DeThi)
+                .Include(m=>m.ChiTietBaiLams)
+                .Where(m => m.UserId == userId)
+                .ToList();
+            foreach (var bl in baiLams)
+            {
+                vm.BaiLamViewItems.Add(new BaiLamViewItem()
+                {
+                    BaiLamId=bl.BaiLamId,
+                    TenDeThi=bl.DeThi.Ten,
+                    Diem=bl.ChiTietBaiLams.Count(m=>m.)
+                });
+            }
             ViewData["BaiLams"] = baiLams;
             return View();
         }

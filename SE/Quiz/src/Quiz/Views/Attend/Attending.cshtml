@@ -18,7 +18,7 @@
             {
                 <input asp-for="Questions[count].CauHoiId" type="hidden" />
                 <div class="form-group">
-                    <label>@(count + 1).ToString(). @item.NoiDungCauHoi</label> <br />
+                    <label>@(count + 1). @item.NoiDungCauHoi</label> <br />
                     <div style="padding-left: 30px;">
                         @foreach (var ai in item.DapAns)
                         {

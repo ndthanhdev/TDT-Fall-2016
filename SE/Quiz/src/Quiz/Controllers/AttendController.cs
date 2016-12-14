@@ -41,8 +41,6 @@ namespace Quiz.Controllers
                 .Select(m => m.CauHoi)
                 .ToListAsync();
 
-            var userId = _userManager.GetUserId(HttpContext.User);
-
             var avm = new AttendingViewModel()
             {
                 DeThiId = deThi.DeThiId,
@@ -66,30 +64,56 @@ namespace Quiz.Controllers
 
             var vm = new IndexViewModel();
             vm.BaiLamViewItems = new List<BaiLamViewItem>();
-
             var baiLams = _context.BaiLams
-                .Include(m=>m.DeThi)
-                .Include(m=>m.ChiTietBaiLams)
+                .Include(m => m.DeThi)
+                .Include(m => m.ChiTietBaiLams)
                 .Where(m => m.UserId == userId)
                 .ToList();
             foreach (var bl in baiLams)
             {
-                vm.BaiLamViewItems.Add(new BaiLamViewItem()
+                var item = new BaiLamViewItem()
                 {
-                    BaiLamId=bl.BaiLamId,
-                    TenDeThi=bl.DeThi.Ten,
-                    Diem=bl.ChiTietBaiLams.Count(m=>m.)
-                });
+                    BaiLamId = bl.BaiLamId,
+                    TenDeThi = bl.DeThi.Ten,
+
+                };
+                var chiTietBaiLams = _context.ChiTietBaiLams
+                    .Include(m => m.DapAn)
+                    .Where(m => bl.ChiTietBaiLams.Select(ctbl => ctbl.ChiTietBaiLamId)
+                    .Contains(m.ChiTietBaiLamId));
+                item.Diem = chiTietBaiLams.Count(m => m.DapAn.IsTrue);
+                item.SoCau = _context.CauHoiDeThis.Count(m => m.DeThiId == bl.DeThiId);
+                vm.BaiLamViewItems.Add(item);
             }
             ViewData["BaiLams"] = baiLams;
-            return View();
+            return View(vm);
         }
 
         [HttpPost]
         public async Task<IActionResult> Submit(AttendingViewModel vm)
         {
             await Task.Yield();
-            return View();
+            var userId = _userManager.GetUserId(HttpContext.User);
+            var baiLam = new BaiLam();
+            baiLam.DeThiId = vm.DeThiId;
+            baiLam.UserId = userId;
+            _context.BaiLams.Add(baiLam);
+            baiLam.ChiTietBaiLams = new List<ChiTietBaiLam>();
+            await _context.SaveChangesAsync();
+            foreach (var q in vm.Questions)
+            {
+                if (q.SelectedDapAn == 0)
+                    continue;
+                var ctbl = new ChiTietBaiLam()
+                {
+                    DapAnId = q.SelectedDapAn
+                };
+                _context.ChiTietBaiLams.Add(ctbl);
+                await _context.SaveChangesAsync();
+                baiLam.ChiTietBaiLams.Add(ctbl);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
         }
     }
 }

@@ -18,4 +18,31 @@
             </div>
         </div>
     </div>
+    @Html.LabelFor(m => m.BaiLamViewItems)
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Đề
+                </th>
+                <th>
+                    Kết Quả
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var i in Model.BaiLamViewItems?? new List<Quiz.Models.AttendQuizViewModels.BaiLamViewItem>())
+                {
+                    <tr>
+                        <td>@i.TenDeThi</td>
+                        <td>@i.Diem/@i.SoCau</td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
 </form>

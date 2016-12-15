@@ -30,13 +30,26 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Nhoms" asp-action="Index">Question Bank</a></li>
-                    <li><a asp-area="" asp-controller="DeThis" asp-action="Index">Quiz Bank</a></li>
-                    <li><a asp-area="" asp-controller="Attend" asp-action="Index">Attend Quiz</a></li>
+                    @if (User.IsInRole(nameof(ApplicationUser.RoleKind.Admin)))
+                    {
+                        <li><a asp-area="" asp-controller="Nhoms" asp-action="Index">Question Bank</a></li>
+                    }
+                    @if (User.IsInRole(nameof(ApplicationUser.RoleKind.Admin))
+                        || User.IsInRole(nameof(ApplicationUser.RoleKind.Teacher)))
+                    {
 
+                        <li><a asp-area="" asp-controller="DeThis" asp-action="Index">Quiz Bank</a></li>
+                    }
+                    @if (User.IsInRole(nameof(ApplicationUser.RoleKind.Admin))
+                        || User.IsInRole(nameof(ApplicationUser.RoleKind.Teacher))
+                        || User.IsInRole(nameof(ApplicationUser.RoleKind.Student)))
+                    {
+
+                        <li><a asp-area="" asp-controller="Attend" asp-action="Index">Attend Quiz</a></li>
+                    }
                     @*<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
+                        <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>

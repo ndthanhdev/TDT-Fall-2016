@@ -75,7 +75,6 @@ namespace Quiz.Controllers
                 {
                     BaiLamId = bl.BaiLamId,
                     TenDeThi = bl.DeThi.Ten,
-
                 };
                 var chiTietBaiLams = _context.ChiTietBaiLams
                     .Include(m => m.DapAn)

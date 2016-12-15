@@ -1,12 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Metadata;
+using System;
 
 namespace Quiz.Migrations
 {
     public partial class m0 : Migration
     {
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "AspNetRoleClaims");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserClaims");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserLogins");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserRoles");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "CauHoiDeThis");
+
+            migrationBuilder.DropTable(
+                name: "ChiTietBaiLams");
+
+            migrationBuilder.DropTable(
+                name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "BaiLams");
+
+            migrationBuilder.DropTable(
+                name: "DapAns");
+
+            migrationBuilder.DropTable(
+                name: "DeThis");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "CauHois");
+
+            migrationBuilder.DropTable(
+                name: "Nhoms");
+        }
+
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -374,51 +418,6 @@ namespace Quiz.Migrations
                 name: "IX_DapAns_CauHoiId",
                 table: "DapAns",
                 column: "CauHoiId");
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "AspNetRoleClaims");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserClaims");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserLogins");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserRoles");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserTokens");
-
-            migrationBuilder.DropTable(
-                name: "CauHoiDeThis");
-
-            migrationBuilder.DropTable(
-                name: "ChiTietBaiLams");
-
-            migrationBuilder.DropTable(
-                name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "BaiLams");
-
-            migrationBuilder.DropTable(
-                name: "DapAns");
-
-            migrationBuilder.DropTable(
-                name: "DeThis");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "CauHois");
-
-            migrationBuilder.DropTable(
-                name: "Nhoms");
         }
     }
 }

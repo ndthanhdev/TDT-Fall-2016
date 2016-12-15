@@ -42,14 +42,10 @@
                     }
                     @if (User.IsInRole(nameof(ApplicationUser.RoleKind.Admin))
                         || User.IsInRole(nameof(ApplicationUser.RoleKind.Teacher))
-                        || User.IsInRole(nameof(ApplicationUser.RoleKind.Student)))
+                        || User.IsInRole("Student"))
                     {
-
                         <li><a asp-area="" asp-controller="Attend" asp-action="Index">Attend Quiz</a></li>
                     }
-                    @*<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>

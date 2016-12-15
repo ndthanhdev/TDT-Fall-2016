@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Quiz.Controllers
 {
+    [Authorize(Roles = "Admin, Teacher")]
     public class CauHoisController : Controller
     {
         private readonly ApplicationDbContext _context;

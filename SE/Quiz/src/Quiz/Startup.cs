@@ -59,7 +59,7 @@ namespace Quiz
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Nhoms}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
 

@@ -1,0 +1,284 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:WpfQLYSHK.Views"
+    xmlns:vm="clr-namespace:WpfQLYSHK.ViewModels"
+    xmlns:Constrols="http://metro.mahapps.com/winfx/xaml/controls"    
+    xmlns:mycontrols="clr-namespace:WpfQLYSHK.Controls"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Custom="http://www.codeplex.com/prism" x:Class="WpfQLYSHK.Views.SHKPage"
+    mc:Ignorable="d"
+    d:DesignHeight="600" d:DesignWidth="800"    
+    Title="Sổ Hộ Khẩu" x:Name="page"
+          xmlns:Converter="clr-namespace:WpfQLYSHK.Converters"
+>
+    <Page.DataContext>
+        <vm:SHKPageViewModel/>
+    </Page.DataContext>
+
+    <Page.Resources>        
+        <Converter:NhaKhauImageConverter x:Key="imgconverter"/>
+
+    </Page.Resources>
+
+    <Constrols:MetroAnimatedTabControl 
+            TabStripPlacement="Bottom">
+
+        <TabItem Header="Sổ Hộ Khẩu">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="48"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="thêm SHK" Width="80" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding AddSHK, Mode=OneWay}" CommandParameter="{Binding SelectedItem, ElementName=listView}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+
+                    <Button Content="sửa SHK" Width="80" Margin="8,0,0,0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding EditSHK, Mode=OneWay}" CommandParameter="{Binding SelectedItem, ElementName=listView}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                    
+                </StackPanel>
+                
+                <ListView x:Name="listView" Grid.Row="1" ItemsSource="{Binding SHKS}" Margin="0,4,0,0"
+                  SelectedItem="{Binding SelectedSHK, Mode=TwoWay}">
+                    
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel  Width="{Binding (FrameworkElement.ActualWidth), 
+                                RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
+                                ItemWidth="{Binding (ListView.View).ItemWidth, 
+                                RelativeSource={RelativeSource AncestorType=ListView}}"
+                                ItemHeight="{Binding (ListView.View).ItemHeight, 
+                                RelativeSource={RelativeSource AncestorType=ListView}}" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <mycontrols:GridWithDoubleClick Width="180" Height="80">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftDoubleClick">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.SelectSHK, ElementName=page}" CommandParameter="{Binding Mode=OneWay}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <mycontrols:GridWithDoubleClick.ColumnDefinitions>
+                                    <ColumnDefinition Width="48"/>
+                                    <ColumnDefinition/>
+                                </mycontrols:GridWithDoubleClick.ColumnDefinitions>
+                                <Image Source="/Assets\Images\shk.png" 
+                               VerticalAlignment="Center" Stretch="Uniform"
+                               Margin="0,0,4,0"/>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding MASHK, StringFormat=Mã: \{0:D\}}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding SONHA, StringFormat=Số nhà: \{0:S\}}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding DUONG, StringFormat=Đường: \{0:S\}}" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </mycontrols:GridWithDoubleClick>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+
+        </TabItem>
+
+        <TabItem Header="Nhân Khẩu Ngoài">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="48"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="NHẬP KHẨU" Width="80" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding NhapKhau, Mode=OneWay}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                    </Button>
+
+                    <Button Content="Thêm" Width="80" Margin="8,0,0,0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding AddNhanKhau, Mode=OneWay}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                    </Button>
+
+
+                </StackPanel>
+
+                <ListView x:Name="listView2" Grid.Row="1" ItemsSource="{Binding NhanKhauNgoais}" Margin="0,4,0,0"
+                  SelectedItem="{Binding SelectedNK,Mode=TwoWay}">
+                    
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel  Width="{Binding (FrameworkElement.ActualWidth), 
+                                RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
+                                ItemWidth="{Binding (ListView.View).ItemWidth, 
+                                RelativeSource={RelativeSource AncestorType=ListView}}"
+                                ItemHeight="{Binding (ListView.View).ItemHeight, 
+                                RelativeSource={RelativeSource AncestorType=ListView}}" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            
+                            <mycontrols:GridWithDoubleClick Width="180" Height="80">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftDoubleClick">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.SelectNKNgoai, ElementName=page}" 
+                                                               CommandParameter="{Binding Mode=OneWay}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                
+                                <mycontrols:GridWithDoubleClick.ColumnDefinitions>
+                                    <ColumnDefinition Width="48"/>
+                                    <ColumnDefinition/>
+                                </mycontrols:GridWithDoubleClick.ColumnDefinitions>
+                                
+                                <Image Source="/Assets\Images\nkngoai.png" 
+                               VerticalAlignment="Center" Stretch="Uniform"
+                               Margin="0,0,4,0"/>
+                                
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding HOTEN, StringFormat=Tên: \{0:S\}}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding NGAYSINH, StringFormat=Ngày sinh: \{0:dd/MM/yyyy\}}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding CMND, StringFormat=CMND: \{0:D\}}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding QUOCTICH, StringFormat=CMND: \{0:D\}}" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </mycontrols:GridWithDoubleClick>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+
+                </ListView>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Tìm Kiếm Nhân Khẩu">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="48"/>
+                    <RowDefinition Height="7*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBox x:Name="tbSearchNK" Width="300" VerticalAlignment="Center">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding DataContext.SearchNhanKhau, ElementName=page}" CommandParameter="{Binding Text, ElementName=tbSearchNK}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                </StackPanel>
+
+                <ListView Grid.Row="1" 
+                  Margin="0,4,0,0"
+                  ItemsSource="{Binding NhanKhaus}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Width="{Binding (FrameworkElement.ActualWidth), 
+                                RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
+                                ItemWidth="{Binding (ListView.View).ItemWidth, 
+                                RelativeSource={RelativeSource AncestorType=ListView}}"
+                                ItemHeight="{Binding (ListView.View).ItemHeight, 
+                                RelativeSource={RelativeSource AncestorType=ListView}}" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Width="180" Height="80">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="48"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Image VerticalAlignment="Center" Stretch="Uniform"
+                               Margin="0,0,4,0" Source="{Binding Converter={StaticResource imgconverter}, Mode=OneWay}"/>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding MANHANKHAU, StringFormat=Mã NK: {0:D}}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding HOTEN, StringFormat=Họ tên: {0:S}}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding CMND, StringFormat=CMND: {0:S}}" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Tìm Kiếm Tạm Trú">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="48"/>
+                    <RowDefinition Height="7*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBox x:Name="tbSearchTT" Width="300" VerticalAlignment="Center">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding DataContext.SearchTamTru, ElementName=page}" CommandParameter="{Binding Text, ElementName=tbSearchTT}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                </StackPanel>
+
+                <ListView Grid.Row="1" 
+                  Margin="0,4,0,0"
+                  ItemsSource="{Binding TamTrus}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Width="{Binding (FrameworkElement.ActualWidth), 
+                                RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
+                                ItemWidth="{Binding (ListView.View).ItemWidth, 
+                                RelativeSource={RelativeSource AncestorType=ListView}}"
+                                ItemHeight="{Binding (ListView.View).ItemHeight, 
+                                RelativeSource={RelativeSource AncestorType=ListView}}" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Width="180" Height="100">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="48"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Image VerticalAlignment="Center" Stretch="Uniform"
+                               Margin="0,0,4,0" Source="/Assets\Images\stt.png"/>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding MASOTAMTRU, StringFormat=Mã STT: {0:S}}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding HOTEN, StringFormat=Họ tên: {0:S}}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding CMND, StringFormat=CMND: {0:S}}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding DIACHITHUONGTRU, StringFormat=Thường trú: {0:S}}" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+
+                </ListView>
+
+            </Grid>
+        </TabItem>
+
+
+    </Constrols:MetroAnimatedTabControl>
+</Page>

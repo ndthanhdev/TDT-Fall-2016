@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLYSHK" Class="DbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-CCTBTPR\SQLEXPRESS;Initial Catalog=QLYSHK;Integrated Security=True" SettingsObjectName="WpfQLYSHK.Properties.Settings" SettingsPropertyName="QLYSHKConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.GIAYKHAISINH" Member="GIAYKHAISINHs">
+    <Type Name="GIAYKHAISINH">
+      <Column Name="MAGIAYKHAISINH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MANHANKHAUME" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MANHANKHAUBE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="NHANKHAU_GIAYKHAISINH" Member="NHANKHAU" ThisKey="MANHANKHAUBE" OtherKey="MANHANKHAU" Type="NHANKHAU" IsForeignKey="true" />
+      <Association Name="NHANKHAU_GIAYKHAISINH1" Member="NHANKHAU1" ThisKey="MANHANKHAUME" OtherKey="MANHANKHAU" Type="NHANKHAU" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GIAYTAMVANG" Member="GIAYTAMVANGs">
+    <Type Name="GIAYTAMVANG">
+      <Column Name="MANHANKHAU" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MAGIAYTAMVANG" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NGAYDI" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="NGAYVE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="NOIDI" Type="System.String" DbType="Char(256)" CanBeNull="true" />
+      <Association Name="NHANKHAU_GIAYTAMVANG" Member="NHANKHAU" ThisKey="MANHANKHAU" OtherKey="MANHANKHAU" Type="NHANKHAU" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NHANKHAU" Member="NHANKHAUs">
+    <Type Name="NHANKHAU">
+      <Column Name="MANHANKHAU" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MASHK" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HOTEN" Type="System.String" DbType="Char(256)" CanBeNull="true" />
+      <Column Name="NGAYSINH" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="QUOCTICH" Type="System.String" DbType="Char(256)" CanBeNull="true" />
+      <Column Name="QUANHEVOICHUHO" Type="System.String" DbType="Char(256)" CanBeNull="true" />
+      <Column Name="CMND" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Association Name="NHANKHAU_GIAYKHAISINH" Member="GIAYKHAISINHs" ThisKey="MANHANKHAU" OtherKey="MANHANKHAUBE" Type="GIAYKHAISINH" />
+      <Association Name="NHANKHAU_GIAYKHAISINH1" Member="GIAYKHAISINHs1" ThisKey="MANHANKHAU" OtherKey="MANHANKHAUME" Type="GIAYKHAISINH" />
+      <Association Name="NHANKHAU_GIAYTAMVANG" Member="GIAYTAMVANGs" ThisKey="MANHANKHAU" OtherKey="MANHANKHAU" Type="GIAYTAMVANG" />
+      <Association Name="NHANKHAU_PHIEUNHAPKHAU" Member="PHIEUNHAPKHAUs" ThisKey="MANHANKHAU" OtherKey="MANHANKHAU" Type="PHIEUNHAPKHAU" />
+      <Association Name="NHANKHAU_PHIEUTACHKHAU" Member="PHIEUTACHKHAUs" ThisKey="MANHANKHAU" OtherKey="MANHANKHAU" Type="PHIEUTACHKHAU" />
+      <Association Name="NHANKHAU_PHIEUTHAYDOICHUHO" Member="PHIEUTHAYDOICHUHOs" ThisKey="MANHANKHAU" OtherKey="MANHANKHAU" Type="PHIEUTHAYDOICHUHO" />
+      <Association Name="NHANKHAU_PHIEUTU" Member="PHIEUTUs" ThisKey="MANHANKHAU" OtherKey="MANHANKHAU" Type="PHIEUTU" />
+      <Association Name="SOHOKHAU_NHANKHAU" Member="SOHOKHAU" ThisKey="MASHK" OtherKey="MASHK" Type="SOHOKHAU" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHIEUNHAPKHAU" Member="PHIEUNHAPKHAUs">
+    <Type Name="PHIEUNHAPKHAU">
+      <Column Name="MANHANKHAU" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MASHK" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MAPHIEUNHAPKHAU" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOICHUYENDI" Type="System.String" DbType="Char(256)" CanBeNull="true" />
+      <Column Name="NGAYCHUYENDEN" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LYDOCHUYENDEN" Type="System.String" DbType="Char(256)" CanBeNull="true" />
+      <Association Name="NHANKHAU_PHIEUNHAPKHAU" Member="NHANKHAU" ThisKey="MANHANKHAU" OtherKey="MANHANKHAU" Type="NHANKHAU" IsForeignKey="true" />
+      <Association Name="SOHOKHAU_PHIEUNHAPKHAU" Member="SOHOKHAU" ThisKey="MASHK" OtherKey="MASHK" Type="SOHOKHAU" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHIEUTACHKHAU" Member="PHIEUTACHKHAUs">
+    <Type Name="PHIEUTACHKHAU">
+      <Column Name="MANHANKHAU" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MAPHIEUTACHKHAU" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NGAYCHUYENDI" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NOICHUYENDI" Type="System.String" DbType="Char(256)" CanBeNull="true" />
+      <Column Name="LYDOCHUYENDI" Type="System.String" DbType="Char(256)" CanBeNull="true" />
+      <Association Name="NHANKHAU_PHIEUTACHKHAU" Member="NHANKHAU" ThisKey="MANHANKHAU" OtherKey="MANHANKHAU" Type="NHANKHAU" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHIEUTHAYDOICHUHO" Member="PHIEUTHAYDOICHUHOs">
+    <Type Name="PHIEUTHAYDOICHUHO">
+      <Column Name="MANHANKHAU" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MASHK" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MAPHIEUTHAYDOICHUHO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NGAYDOI" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LYDO" Type="System.String" DbType="Char(256)" CanBeNull="true" />
+      <Association Name="NHANKHAU_PHIEUTHAYDOICHUHO" Member="NHANKHAU" ThisKey="MANHANKHAU" OtherKey="MANHANKHAU" Type="NHANKHAU" IsForeignKey="true" />
+      <Association Name="SOHOKHAU_PHIEUTHAYDOICHUHO" Member="SOHOKHAU" ThisKey="MASHK" OtherKey="MASHK" Type="SOHOKHAU" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHIEUTU" Member="PHIEUTUs">
+    <Type Name="PHIEUTU">
+      <Column Name="MANHANKHAU" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MAPHIEUTU" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NGAYMAT" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LYDOMAT" Type="System.String" DbType="Char(256)" CanBeNull="true" />
+      <Association Name="NHANKHAU_PHIEUTU" Member="NHANKHAU" ThisKey="MANHANKHAU" OtherKey="MANHANKHAU" Type="NHANKHAU" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SOHOKHAU" Member="SOHOKHAUs">
+    <Type Name="SOHOKHAU">
+      <Column Name="MASHK" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SONHA" Type="System.String" DbType="Char(256)" CanBeNull="true" />
+      <Column Name="DUONG" Type="System.String" DbType="Char(256)" CanBeNull="true" />
+      <Association Name="SOHOKHAU_NHANKHAU" Member="NHANKHAUs" ThisKey="MASHK" OtherKey="MASHK" Type="NHANKHAU" />
+      <Association Name="SOHOKHAU_PHIEUNHAPKHAU" Member="PHIEUNHAPKHAUs" ThisKey="MASHK" OtherKey="MASHK" Type="PHIEUNHAPKHAU" />
+      <Association Name="SOHOKHAU_PHIEUTHAYDOICHUHO" Member="PHIEUTHAYDOICHUHOs" ThisKey="MASHK" OtherKey="MASHK" Type="PHIEUTHAYDOICHUHO" />
+      <Association Name="SOHOKHAU_SOTAMTRU" Member="SOTAMTRUs" ThisKey="MASHK" OtherKey="MASHK" Type="SOTAMTRU" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SOTAMTRU" Member="SOTAMTRUs">
+    <Type Name="SOTAMTRU">
+      <Column Name="MASOTAMTRU" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MASHK" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DIACHITHUONGTRU" Type="System.String" DbType="Char(256)" CanBeNull="true" />
+      <Column Name="HOTEN" Type="System.String" DbType="Char(256)" CanBeNull="true" />
+      <Column Name="CMND" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="SOHOKHAU_SOTAMTRU" Member="SOHOKHAU" ThisKey="MASHK" OtherKey="MASHK" Type="SOHOKHAU" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,249 @@
+﻿<Page x:Name="page" x:Class="WpfQLYSHK.Views.NhanKhauPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfQLYSHK.Views"
+      xmlns:vm="clr-namespace:WpfQLYSHK.ViewModels"
+      xmlns:Constrols="http://metro.mahapps.com/winfx/xaml/controls"    
+      xmlns:mycontrols="clr-namespace:WpfQLYSHK.Controls"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Custom="http://www.codeplex.com/prism"
+      d:DataContext="{d:DesignInstance Type=vm:NhanKhauPageViewModel}"
+      xmlns:Converter="clr-namespace:WpfQLYSHK.Converters"
+      Title="Nhân Khẩu">
+
+    <Page.Resources>
+        <Converter:NhaKhauImageConverter x:Key="imgconverter"/>
+    </Page.Resources>
+
+
+    <Constrols:MetroAnimatedTabControl 
+            TabStripPlacement="Bottom">
+        <TabItem Header="Thường Trú">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="48"/>
+                    <RowDefinition Height="7*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Width="80" Margin="8,0,0,0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding Report}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <TextBlock FontSize="9" Text="BÁO CÁO" TextWrapping="Wrap"/>
+                    </Button>
+
+
+                    <Button Width="80" Margin="8,0,0,0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding TachKhau}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <TextBlock FontSize="9" Text="TÁCH KHẨU" TextWrapping="Wrap"/>
+                    </Button>
+
+                    <Button Width="80" Margin="8,0,0,0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding ChungTu}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                        <TextBlock FontSize="9" Text="CHỨNG TỬ" TextWrapping="Wrap"/>
+                    </Button>
+
+                    <Button Width="80" Margin="8,0,0,0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding DatLamChuHo}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <TextBlock FontSize="9" Text="ĐẶT LÀM CHỦ HỘ" TextAlignment="Center" TextWrapping="Wrap"/>
+                    </Button>
+
+                    <Button Width="80" Margin="8,0,0,0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding TamVang}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <TextBlock FontSize="9" Text="TẠM VẮNG" TextWrapping="Wrap"/>
+                    </Button>
+
+
+                    <Button Width="80" Margin="8,0,0,0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding KhaiSinh}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <TextBlock FontSize="9" Text="KHAI SINH" TextWrapping="Wrap"/>
+                    </Button>
+
+                </StackPanel>
+
+                <ListView Grid.Row="1" 
+                  Margin="0,4,0,0"
+                  ItemsSource="{Binding NhanKhaus}"
+                  SelectedItem="{Binding SelectedNhanKhau,Mode=TwoWay}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Width="{Binding (FrameworkElement.ActualWidth), 
+                                RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
+                                ItemWidth="{Binding (ListView.View).ItemWidth, 
+                                RelativeSource={RelativeSource AncestorType=ListView}}"
+                                ItemHeight="{Binding (ListView.View).ItemHeight, 
+                                RelativeSource={RelativeSource AncestorType=ListView}}" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <mycontrols:GridWithDoubleClick Width="180" Height="80">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftDoubleClick">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.Detail, ElementName=page}" CommandParameter="{Binding Mode=OneWay}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <mycontrols:GridWithDoubleClick.ColumnDefinitions>
+                                    <ColumnDefinition Width="48"/>
+                                    <ColumnDefinition/>
+                                </mycontrols:GridWithDoubleClick.ColumnDefinitions>
+                                <Image VerticalAlignment="Center" Stretch="Uniform"
+                               Margin="0,0,4,0" Source="{Binding Converter={StaticResource imgconverter}, Mode=OneWay}"/>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding MANHANKHAU, StringFormat=Mã NK: {0:D}}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding HOTEN, StringFormat=Họ tên: {0:S}}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding CMND, StringFormat=CMND: {0:S}}" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </mycontrols:GridWithDoubleClick>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Tạm Trú">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="48"/>
+                    <RowDefinition Height="7*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Width="80" Margin="8,0,0,0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding ThemSoTamTru}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                        <TextBlock FontSize="9" Text="THÊM TẠM TRÚ" TextWrapping="Wrap"/>
+                    </Button>
+                </StackPanel>
+
+                <ListView Grid.Row="1" 
+                  Margin="0,4,0,0"
+                  ItemsSource="{Binding SoTamTrus}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Width="{Binding (FrameworkElement.ActualWidth), 
+                                RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
+                                ItemWidth="{Binding (ListView.View).ItemWidth, 
+                                RelativeSource={RelativeSource AncestorType=ListView}}"
+                                ItemHeight="{Binding (ListView.View).ItemHeight, 
+                                RelativeSource={RelativeSource AncestorType=ListView}}" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Width="180" Height="100">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="48"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Image VerticalAlignment="Center" Stretch="Uniform"
+                               Margin="0,0,4,0" Source="/Assets\Images\stt.png"/>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding MASOTAMTRU, StringFormat=Mã STT: {0:S}}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding HOTEN, StringFormat=Họ tên: {0:S}}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding CMND, StringFormat=CMND: {0:S}}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding DIACHITHUONGTRU, StringFormat=Thường trú: {0:S}}" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+
+                </ListView>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Lịch Sử Thay Đổi Chủ Hộ">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="48"/>
+                    <RowDefinition Height="7*"/>
+                </Grid.RowDefinitions>
+
+                <ListView Grid.Row="1" ItemsSource="{Binding PhieuThayDoiChuHos}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding NGAYDOI,StringFormat=dd/MM/yyyy}"/>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} : {1}">
+                                            <Binding Path="MANHANKHAU" />
+                                            <Binding Path="NHANKHAU.HOTEN" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                <TextBlock Text="{Binding LYDO}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Lịch Sử Nhập Khẩu">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="48"/>
+                    <RowDefinition Height="7*"/>
+                </Grid.RowDefinitions>
+
+                <ListView Grid.Row="1" ItemsSource="{Binding PhieuNhapKhaus}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding NGAYCHUYENDEN,StringFormat=dd/MM/yyyy}"/>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} : {1}">
+                                            <Binding Path="MANHANKHAU" />
+                                            <Binding Path="NHANKHAU.HOTEN" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                <TextBlock Text="{Binding LYDOCHUYENDEN,StringFormat=Lý do: {0:S} }"/>
+                                <TextBlock Text="{Binding NOICHUYENDI,StringFormat=Nơi chuyển đi: {0:S} }"/>
+                                <Line Height="10" Width="1000" Fill="Gray" HorizontalAlignment="Stretch" Stroke="Gray"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </TabItem>
+
+
+    </Constrols:MetroAnimatedTabControl>
+</Page>

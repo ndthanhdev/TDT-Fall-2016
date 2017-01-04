@@ -1,0 +1,170 @@
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\WpfQLYSHK.exe.config
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\WpfQLYSHK.exe
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\WpfQLYSHK.pdb
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\MahApps.Metro.dll
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\MahApps.Metro.IconPacks.dll
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Composition.dll
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Interactivity.dll
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Mvvm.Desktop.dll
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Mvvm.dll
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.PubSubEvents.dll
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.dll
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\MahApps.Metro.pdb
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\MahApps.Metro.xml
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\MahApps.Metro.IconPacks.pdb
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\MahApps.Metro.IconPacks.xml
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Composition.xml
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Interactivity.xml
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Mvvm.xml
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.xml
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK.csprojResolveAssemblyReference.cache
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\Controls\GridWithDoubleClick.g.cs
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\GridWithDoubleClick.g.cs
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\MainWindow.g.cs
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\NhanKhauPage.g.cs
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\SHKPage.g.cs
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\App.g.cs
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK_MarkupCompile.cache
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK_MarkupCompile.lref
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\App.baml
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\Controls\GridWithDoubleClick.baml
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\CustomDictionary.baml
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\GridWithDoubleClick.baml
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\MainWindow.baml
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\NhanKhauPage.baml
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\SHKPage.baml
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK.g.resources
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK.Properties.Resources.resources
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK.csproj.GenerateResource.Cache
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK.exe
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK.pdb
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\AddEditSHKWindow.g.cs
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\AddEditSHKWindow.baml
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\TachSHKWindow.g.cs
+C:\Users\thanh\Documents\Workspace\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\TachSHKWindow.baml
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\WpfQLYSHK.exe.config
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK.exe
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK.pdb
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\WpfQLYSHK.exe
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\WpfQLYSHK.pdb
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\MahApps.Metro.dll
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\MahApps.Metro.IconPacks.dll
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Composition.dll
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Interactivity.dll
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Mvvm.Desktop.dll
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Mvvm.dll
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.PubSubEvents.dll
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.dll
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\MahApps.Metro.pdb
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\MahApps.Metro.xml
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\MahApps.Metro.IconPacks.pdb
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\MahApps.Metro.IconPacks.xml
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Composition.xml
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Interactivity.xml
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Mvvm.xml
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.xml
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK.csprojResolveAssemblyReference.cache
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Controls\GridWithDoubleClick.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\GridWithDoubleClick.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\MainWindow.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\NhanKhauPage.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\SHKPage.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\AddEditSHKWindow.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\TachSHKWindow.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\App.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK_MarkupCompile.cache
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK_MarkupCompile.lref
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\App.baml
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Controls\GridWithDoubleClick.baml
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\CustomDictionary.baml
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\GridWithDoubleClick.baml
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\MainWindow.baml
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\NhanKhauPage.baml
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\SHKPage.baml
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\AddEditSHKWindow.baml
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\TachSHKWindow.baml
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK.g.resources
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK.Properties.Resources.resources
+C:\Users\thanh\Documents\TDT\ISAD\Assignment\group-32\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK.csproj.GenerateResource.Cache
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\WpfQLYSHK.exe.config
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\WpfQLYSHK.exe
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\WpfQLYSHK.pdb
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\MahApps.Metro.dll
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\MahApps.Metro.IconPacks.dll
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Composition.dll
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Interactivity.dll
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Mvvm.Desktop.dll
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Mvvm.dll
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.PubSubEvents.dll
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.dll
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\MahApps.Metro.pdb
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\MahApps.Metro.xml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\MahApps.Metro.IconPacks.pdb
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\MahApps.Metro.IconPacks.xml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Composition.xml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Interactivity.xml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.Mvvm.xml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.xml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Controls\GridWithDoubleClick.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\GridWithDoubleClick.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\MainWindow.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\NhanKhauWindow.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\GiayTamVangWindow.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\LoginPage.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\NhanKhauPage.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\PhieuTachKhauWindow.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\PhieuNhapKhauWindow.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\PhieuTDChuHoWindow.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\PhieuTuWindow.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\PickSHKWindow.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\SHKPage.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\SHKWindow.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\SoTamTruWindow.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\App.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK_MarkupCompile.cache
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK_MarkupCompile.lref
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\App.baml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Controls\GridWithDoubleClick.baml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\CustomDictionary.baml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\GridWithDoubleClick.baml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\MainWindow.baml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\NhanKhauWindow.baml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\GiayTamVangWindow.baml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\LoginPage.baml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\NhanKhauPage.baml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\PhieuTachKhauWindow.baml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\PhieuNhapKhauWindow.baml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\PhieuTDChuHoWindow.baml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\PhieuTuWindow.baml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\PickSHKWindow.baml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\SHKPage.baml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\SHKWindow.baml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\SoTamTruWindow.baml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK.g.resources
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK.Properties.Resources.resources
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK.csproj.GenerateResource.Cache
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK.exe
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK.pdb
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\WpfQLYSHK.csprojResolveAssemblyReference.cache
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\ReportWindow.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\ReportWindow.baml
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\RdlCompile.cache
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\RdlCompile.compiled
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\NhanKhauDetailWindow.g.cs
+C:\Users\thanh\Documents\TDT\ISAD\ass new\demo\WpfQLYSHK\WpfQLYSHK\obj\Debug\Views\NhanKhauDetailWindow.baml

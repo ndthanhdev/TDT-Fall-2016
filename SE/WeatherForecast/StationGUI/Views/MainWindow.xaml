@@ -1,0 +1,684 @@
+﻿<Controls:MetroWindow x:Class="StationGUI.Views.MainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:local="clr-namespace:StationGUI.Views"
+                      xmlns:vm="clr-namespace:StationGUI.ViewModels"
+                      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:Converters="clr-namespace:StationGUI.Converters"
+                      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+                      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                      mc:Ignorable="d"
+                      d:DataContext="{d:DesignInstance Type={x:Type vm:MainWindowViewModel}}"
+                      BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}"
+                      MinWidth="800" MinHeight="400"
+                      ResizeMode="CanResizeWithGrip">
+    <Controls:MetroWindow.Resources>
+        <Converters:GreaterThanZeroConverter x:Key="GreaterThanZero" />
+        <BooleanToVisibilityConverter x:Key="bvc" />
+    </Controls:MetroWindow.Resources>
+    <Controls:MetroAnimatedTabControl Controls:TabControlHelper.IsUnderlined="True">
+        <TabItem Header="Dữ Liệu">
+            <Grid Margin="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1" />
+                    <ColumnDefinition Width="8*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <StackPanel Margin="8,32,8,0"
+                            Grid.RowSpan="2">
+
+                    <Grid Margin="0,0,0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="48" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="7*" />
+                            <RowDefinition Height="3*" />
+                        </Grid.RowDefinitions>
+
+                        <ToggleButton x:Name="toggleTemperature"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Width="48"    Height="48"
+                                      Style="{DynamicResource MetroCircleToggleButtonStyle}"
+                                      Grid.RowSpan="2"
+                                      IsChecked="{Binding IsTemperatureWorking, Mode=TwoWay}">
+                            <Grid>
+                                <Grid Width="48" Height="48" Visibility="Collapsed" />
+                                <Path Data="M8,5C8.552,5,9,5.448,9,6L9,22.091705 9.0839787,22.130606C9.9219227,22.544302 10.5,23.422684 10.5,24.438997 10.5,25.852999 9.3809996,27 8,27 6.619,27 5.5,25.852999 5.5,24.438997 5.5,23.422684 6.0780773,22.544302 6.9160209,22.130606L7,22.091705 7,6C7,5.448,7.448,5,8,5z M7.8910217,2C6.2430115,2,4.9990234,3.2339935,4.9990234,4.8710022L4.9990234,19.052994 4.5570068,19.444C2.9320068,20.533997 2,22.263 2,24.186996 2,27.391998 4.7019958,30 8.0230103,30 11.375,30 14,27.445999 14,24.186996 14,22.164993 13.100006,20.481995 11.466003,19.449005L11,19.154007 11,4.8710022C11,3.3139954,9.5760193,2,7.8910217,2z M7.8910217,0C10.708008,0,13,2.1849976,13,4.8710022L13,18.076996C14.914001,19.492996 16,21.688995 16,24.186996 16,28.494995 12.421997,32 8.0230103,32 3.598999,32 0,28.494995 0,24.186996 0,21.804001 1.1119995,19.567993 3,18.102997L2.9990234,4.8710022C2.9990234,2.1399994,5.1480103,0,7.8910217,0z"
+                                      Stretch="Uniform"
+                                      Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}"
+                                      Width="26" Height="26" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" />
+                            </Grid>
+                        </ToggleButton>
+
+                        <Slider x:Name="sliderTemperature"
+                                Grid.Column="1"
+                                Style="{StaticResource MetroSlider}"
+                                IsEnabled="{Binding IsChecked, ElementName=toggleTemperature}"
+                                Minimum="-50"
+                                Maximum="100"
+                                VerticalAlignment="Center"
+                                Value="{Binding Temperature, Mode=TwoWay}" />
+                        <TextBlock Text="{Binding Value, ElementName=sliderTemperature, StringFormat=#0.##°C}"
+                                   FontSize="16"
+                                   Grid.Column="1"
+                                   Grid.Row="1" />
+                    </Grid>
+
+                    <Grid Margin="0,0,0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="48" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="7*" />
+                            <RowDefinition Height="3*" />
+                        </Grid.RowDefinitions>
+
+                        <ToggleButton x:Name="toggleHumidity"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Width="48"    Height="48"
+                                      Style="{DynamicResource MetroCircleToggleButtonStyle}"
+                                      Grid.RowSpan="2"
+                                      IsChecked="{Binding IsHumidityWorking, Mode=TwoWay}">
+                            <Grid>
+                                <Grid Width="48" Height="48" Visibility="Collapsed" />
+                                <Path Data="M10.058927,10.900028C11.158908,13.400034 9.8589301,15.200039 9.8589301,15.200039 9.5589354,15.900041 9.4589369,16.400042 9.4589369,16.400042 9.058944,19.200049 11.158908,19.60005 11.158908,19.60005 13.258872,19.90005 13.758863,17.800045 13.758863,17.800045 14.958843,14.300036 10.058927,10.900028 10.058927,10.900028z M2.3590581,0C2.3590584,0 21.958723,12.300032 17.4588,25.500064 17.4588,25.500065 15.358836,32.900083 7.0589778,31.900081 7.0589781,31.900081 -1.24088,30.500077 0.15909624,20.200051 0.15909624,20.200051 0.35909271,18.400047 1.6590705,15.80004 1.6590705,15.80004 6.5589866,8.6000223 2.3590581,0z"
+                                      Stretch="Uniform"
+                                      Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}"
+                                      Width="26" Height="26" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" />
+                            </Grid>
+                        </ToggleButton>
+
+                        <Slider x:Name="sliderHumidity"
+                                Grid.Column="1"
+                                Style="{StaticResource MetroSlider}"
+                                IsEnabled="{Binding IsChecked, ElementName=toggleHumidity}"
+                                Minimum="0"
+                                Maximum="1"
+                                VerticalAlignment="Center"
+                                Value="{Binding Humidity, Mode=TwoWay}" />
+                        <TextBlock Text="{Binding Value, ElementName=sliderHumidity, StringFormat=#0%}"
+                                   FontSize="16"
+                                   Grid.Column="1"
+                                   Grid.Row="1" />
+                    </Grid>
+
+                    <Grid Margin="0,0,0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="48" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="7*" />
+                            <RowDefinition Height="3*" />
+                        </Grid.RowDefinitions>
+
+                        <ToggleButton x:Name="toggleBarometer"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Width="48"    Height="48"
+                                      Style="{DynamicResource MetroCircleToggleButtonStyle}"
+                                      Grid.RowSpan="2"
+                                      IsChecked="{Binding IsBarometerWorking, Mode=TwoWay}">
+                            <Grid>
+                                <Grid Width="48" Height="48" Visibility="Collapsed" />
+                                <Path Data="M4.7159762,14.793012C5.2519755,14.793012 5.6859751,15.227006 5.6859751,15.762999 5.6859751,16.297992 5.2519755,16.731986 4.7159762,16.731986 4.1799769,16.731986 3.7459776,16.297992 3.7459774,15.762999 3.7459776,15.227006 4.1799769,14.793012 4.7159762,14.793012z M25.697008,14.441995C26.233007,14.441995 26.667007,14.875996 26.667007,15.410996 26.667007,15.946998 26.233007,16.381 25.697008,16.381 25.161009,16.381 24.727011,15.946998 24.727011,15.410996 24.727011,14.875996 25.161009,14.441995 25.697008,14.441995z M16,12.601998L14.248991,18.308991 16,20.118989 17.751009,18.308991z M6.2530789,9.2403326C6.4093571,9.2444067 6.5669227,9.2864485 6.7118936,9.3701801 7.1757998,9.6381226 7.3347673,10.230993 7.0668216,10.693892 6.7988758,11.157791 6.205996,11.316756 5.7430892,11.048815 5.2791834,10.781873 5.1202154,10.189002 5.3881612,9.7251034 5.5716863,9.4061728 5.9092665,9.2313709 6.2530789,9.2403326z M25.747288,9.2403278C26.090841,9.2313662 26.428637,9.406167 26.61285,9.7250977 26.880796,10.187997 26.721828,10.780868 26.257923,11.04881 25.794016,11.316751 25.201136,11.157785 24.934191,10.693887 24.666245,10.229988 24.825212,9.6371174 25.289118,9.3701754 25.433777,9.2864437 25.591127,9.2444019 25.747288,9.2403278z M16,5.9910069L19.941021,18.834991 16,22.907985 12.058979,18.834991z M21.668095,5.1753445C21.824377,5.1794486 21.981947,5.2214894 22.126923,5.3052201 22.590843,5.5721574 22.749815,6.165019 22.481861,6.6289105 22.213907,7.092802 21.621008,7.2517653 21.158087,6.9838276 20.694166,6.7158904 20.535194,6.1230288 20.803148,5.6591373 20.986679,5.340899 21.32427,5.1663146 21.668095,5.1753445z M10.33225,5.174324C10.675804,5.1653619 11.013599,5.3401608 11.197812,5.6590862 11.465757,6.1229777 11.306789,6.7158394 10.842883,6.9827771 10.378977,7.2507143 9.7860975,7.0917516 9.5191507,6.6288595 9.2512054,6.164968 9.4101734,5.5721068 9.8740797,5.3041692 10.018738,5.220439 10.176088,5.1783977 10.33225,5.174324z M15.999987,3.6869845C16.535978,3.6869843 16.969973,4.1209903 16.969973,4.6569982 16.969973,5.193006 16.535978,5.6270123 15.999987,5.6270123 15.464993,5.6270123 15.030999,5.193006 15.030999,4.6569982 15.030999,4.1209903 15.464993,3.6869843 15.999987,3.6869845z M16,0C24.822998,-4.5496404E-07 32,7.071012 32,15.762996 32,20.110009 30.138,24.310996 26.890015,27.29L25.579041,25.860984C28.469055,23.210015 30.061035,19.62301 30.061035,15.762996 30.061035,8.1400118 23.753052,1.9389943 16,1.9389944 8.2470093,1.9389943 1.9400024,8.1400118 1.9400024,15.762996 1.9400024,19.62301 3.5320435,23.210015 6.4210205,25.860984L5.1110229,27.29C1.8630371,24.310996 0,20.110009 0,15.762996 0,7.071012 7.1780396,-4.5496404E-07 16,0z"
+                                      Stretch="Uniform"
+                                      Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}"
+                                      Width="26" Height="26" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" />
+                            </Grid>
+                        </ToggleButton>
+
+                        <Slider x:Name="sliderBarometer"
+                                Grid.Column="1"
+                                Style="{StaticResource MetroSlider}"
+                                IsEnabled="{Binding IsChecked, ElementName=toggleBarometer}"
+                                Minimum="800"
+                                Maximum="1200"
+                                VerticalAlignment="Center"
+                                Value="{Binding Barometer, Mode=TwoWay}" />
+                        <TextBlock Text="{Binding Value, ElementName=sliderBarometer, StringFormat=###0.##mb}"
+                                   FontSize="16"
+                                   Grid.Column="1"
+                                   Grid.Row="1" />
+                    </Grid>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2"
+                            Margin="8"
+                            VerticalAlignment="Bottom"
+                            Orientation="Vertical">
+
+                    <!--threshold-->
+                    <TextBlock Text="{Binding Value, ElementName=sliderThreshold, StringFormat=Gửi dữ liệu mỗi #0 giây}" />
+                    <Slider x:Name="sliderThreshold"
+                            Style="{StaticResource MetroSlider}"
+                            Minimum="3"
+                            Maximum="30"
+                            Value="{Binding Threshold, Mode=TwoWay}" />
+
+                    <!--progress-->
+                    <Controls:MetroProgressBar Grid.Row="2"
+                                           VerticalAlignment="Bottom"
+                                           IsIndeterminate="{Binding IsSending}"
+                                           Maximum="{Binding Threshold}"
+                                           Value="{Binding Clock}" />
+                    <TextBlock HorizontalAlignment="Right"
+                               Text="{Binding TimeLeft, StringFormat=Gửi dữ liệu trong #0 giây}" />
+                </StackPanel>
+
+                <!--seperator-->
+                <Rectangle Grid.Column="1"
+                           Grid.RowSpan="3"
+                           Margin="0,16,0,16"
+                           VerticalAlignment="Stretch"
+                           Fill="{DynamicResource AccentColorBrush}" />
+
+                <Grid Grid.Column="2"   Grid.RowSpan="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal"    HorizontalAlignment="Right">
+
+                        <ToggleButton Name="toggleVisibilityTemperature"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Width="32"    Height="32"
+                                      Style="{DynamicResource MetroCircleToggleButtonStyle}"
+                                      IsChecked="{Binding TemperatureVisibility, Mode=TwoWay}">
+                            <Grid>
+                                <Grid Width="32" Height="32" Visibility="Collapsed" />
+                                <Path Data="M8,5C8.552,5,9,5.448,9,6L9,22.091705 9.0839787,22.130606C9.9219227,22.544302 10.5,23.422684 10.5,24.438997 10.5,25.852999 9.3809996,27 8,27 6.619,27 5.5,25.852999 5.5,24.438997 5.5,23.422684 6.0780773,22.544302 6.9160209,22.130606L7,22.091705 7,6C7,5.448,7.448,5,8,5z M7.8910217,2C6.2430115,2,4.9990234,3.2339935,4.9990234,4.8710022L4.9990234,19.052994 4.5570068,19.444C2.9320068,20.533997 2,22.263 2,24.186996 2,27.391998 4.7019958,30 8.0230103,30 11.375,30 14,27.445999 14,24.186996 14,22.164993 13.100006,20.481995 11.466003,19.449005L11,19.154007 11,4.8710022C11,3.3139954,9.5760193,2,7.8910217,2z M7.8910217,0C10.708008,0,13,2.1849976,13,4.8710022L13,18.076996C14.914001,19.492996 16,21.688995 16,24.186996 16,28.494995 12.421997,32 8.0230103,32 3.598999,32 0,28.494995 0,24.186996 0,21.804001 1.1119995,19.567993 3,18.102997L2.9990234,4.8710022C2.9990234,2.1399994,5.1480103,0,7.8910217,0z"
+                                      Stretch="Uniform"
+                                      Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}"
+                                      Width="16" Height="16" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" />
+                            </Grid>
+                        </ToggleButton>
+
+                        <ToggleButton Name="toggleVisibilityHumidity" HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Width="32"    Height="32"
+                                      Style="{DynamicResource MetroCircleToggleButtonStyle}"
+                                      IsChecked="{Binding HumidityVisibility,Mode=TwoWay}">
+                            <Grid>
+                                <Grid Width="32" Height="32" Visibility="Collapsed" />
+                                <Path Data="M10.058927,10.900028C11.158908,13.400034 9.8589301,15.200039 9.8589301,15.200039 9.5589354,15.900041 9.4589369,16.400042 9.4589369,16.400042 9.058944,19.200049 11.158908,19.60005 11.158908,19.60005 13.258872,19.90005 13.758863,17.800045 13.758863,17.800045 14.958843,14.300036 10.058927,10.900028 10.058927,10.900028z M2.3590581,0C2.3590584,0 21.958723,12.300032 17.4588,25.500064 17.4588,25.500065 15.358836,32.900083 7.0589778,31.900081 7.0589781,31.900081 -1.24088,30.500077 0.15909624,20.200051 0.15909624,20.200051 0.35909271,18.400047 1.6590705,15.80004 1.6590705,15.80004 6.5589866,8.6000223 2.3590581,0z"
+                                      Stretch="Uniform"
+                                      Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}"
+                                      Width="16" Height="16" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" />
+                            </Grid>
+                        </ToggleButton>
+
+                        <ToggleButton Name="toggleVisibilityBarometer"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Width="32"    Height="32"
+                                      Style="{DynamicResource MetroCircleToggleButtonStyle}"
+                                      IsChecked="{Binding BarometerVisibility, Mode=TwoWay}">
+                            <Grid>
+                                <Grid Width="32" Height="32" Visibility="Collapsed" />
+                                <Path Data="M4.7159762,14.793012C5.2519755,14.793012 5.6859751,15.227006 5.6859751,15.762999 5.6859751,16.297992 5.2519755,16.731986 4.7159762,16.731986 4.1799769,16.731986 3.7459776,16.297992 3.7459774,15.762999 3.7459776,15.227006 4.1799769,14.793012 4.7159762,14.793012z M25.697008,14.441995C26.233007,14.441995 26.667007,14.875996 26.667007,15.410996 26.667007,15.946998 26.233007,16.381 25.697008,16.381 25.161009,16.381 24.727011,15.946998 24.727011,15.410996 24.727011,14.875996 25.161009,14.441995 25.697008,14.441995z M16,12.601998L14.248991,18.308991 16,20.118989 17.751009,18.308991z M6.2530789,9.2403326C6.4093571,9.2444067 6.5669227,9.2864485 6.7118936,9.3701801 7.1757998,9.6381226 7.3347673,10.230993 7.0668216,10.693892 6.7988758,11.157791 6.205996,11.316756 5.7430892,11.048815 5.2791834,10.781873 5.1202154,10.189002 5.3881612,9.7251034 5.5716863,9.4061728 5.9092665,9.2313709 6.2530789,9.2403326z M25.747288,9.2403278C26.090841,9.2313662 26.428637,9.406167 26.61285,9.7250977 26.880796,10.187997 26.721828,10.780868 26.257923,11.04881 25.794016,11.316751 25.201136,11.157785 24.934191,10.693887 24.666245,10.229988 24.825212,9.6371174 25.289118,9.3701754 25.433777,9.2864437 25.591127,9.2444019 25.747288,9.2403278z M16,5.9910069L19.941021,18.834991 16,22.907985 12.058979,18.834991z M21.668095,5.1753445C21.824377,5.1794486 21.981947,5.2214894 22.126923,5.3052201 22.590843,5.5721574 22.749815,6.165019 22.481861,6.6289105 22.213907,7.092802 21.621008,7.2517653 21.158087,6.9838276 20.694166,6.7158904 20.535194,6.1230288 20.803148,5.6591373 20.986679,5.340899 21.32427,5.1663146 21.668095,5.1753445z M10.33225,5.174324C10.675804,5.1653619 11.013599,5.3401608 11.197812,5.6590862 11.465757,6.1229777 11.306789,6.7158394 10.842883,6.9827771 10.378977,7.2507143 9.7860975,7.0917516 9.5191507,6.6288595 9.2512054,6.164968 9.4101734,5.5721068 9.8740797,5.3041692 10.018738,5.220439 10.176088,5.1783977 10.33225,5.174324z M15.999987,3.6869845C16.535978,3.6869843 16.969973,4.1209903 16.969973,4.6569982 16.969973,5.193006 16.535978,5.6270123 15.999987,5.6270123 15.464993,5.6270123 15.030999,5.193006 15.030999,4.6569982 15.030999,4.1209903 15.464993,3.6869843 15.999987,3.6869845z M16,0C24.822998,-4.5496404E-07 32,7.071012 32,15.762996 32,20.110009 30.138,24.310996 26.890015,27.29L25.579041,25.860984C28.469055,23.210015 30.061035,19.62301 30.061035,15.762996 30.061035,8.1400118 23.753052,1.9389943 16,1.9389944 8.2470093,1.9389943 1.9400024,8.1400118 1.9400024,15.762996 1.9400024,19.62301 3.5320435,23.210015 6.4210205,25.860984L5.1110229,27.29C1.8630371,24.310996 0,20.110009 0,15.762996 0,7.071012 7.1780396,-4.5496404E-07 16,0z"
+                                      Stretch="Uniform"
+                                      Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}"
+                                      Width="16" Height="16" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" />
+                            </Grid>
+                        </ToggleButton>
+                    </StackPanel>
+                    <lvc:CartesianChart Grid.Row="1" VerticalAlignment="Stretch"
+                                        LegendLocation="Top"
+                                        DisableAnimations="True">
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis LabelFormatter="{Binding DateTimeFormatter}"
+                                  MinValue="{Binding AxisMin}"
+                                  MaxValue="{Binding AxisMax}"
+                                  DisableAnimations="True">
+                                <lvc:Axis.Separator>
+                                    <lvc:Separator Step="{Binding AxisStep}"></lvc:Separator>
+                                </lvc:Axis.Separator>
+                            </lvc:Axis>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis Foreground="IndianRed" />
+                            <lvc:Axis Foreground="Orange" Position="RightTop" Separator="{x:Static lvc:DefaultAxes.CleanSeparator}" />
+                            <lvc:Axis Foreground="DodgerBlue" Position="RightTop" Separator="{x:Static lvc:DefaultAxes.CleanSeparator}" />
+                        </lvc:CartesianChart.AxisY>
+
+                        <lvc:CartesianChart.Series>
+                            <lvc:LineSeries Title="Độ ẩm"
+                                            PointGeometry="{x:Static lvc:DefaultGeometries.Circle}"
+                                            ScalesYAt="2"
+                                            Visibility="{Binding HumidityVisibility, Converter={StaticResource bvc}}"
+                                            Values="{Binding HumidityChartValues}" />
+
+                            <lvc:LineSeries Title="Nhiệt độ"
+                                            PointGeometry="{x:Static lvc:DefaultGeometries.Diamond}"
+                                            ScalesYAt="0"
+                                            Visibility="{Binding TemperatureVisibility, Converter={StaticResource bvc}}"
+                                            Values="{Binding TemperatureChartValues}" />
+
+                            <lvc:LineSeries Title="Khí áp"
+                                            PointGeometry="{x:Static lvc:DefaultGeometries.Triangle}"
+                                            ScalesYAt="1"
+                                            Values="{Binding BarometerChartValues}" Visibility="{Binding BarometerVisibility, Converter={StaticResource bvc}}" />
+                        </lvc:CartesianChart.Series>
+                    </lvc:CartesianChart>
+                </Grid>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Báo Cáo">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="128" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid Margin="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <ToggleButton HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Width="32"    Height="32"
+                                      Style="{DynamicResource MetroCircleToggleButtonStyle}"
+                                      IsChecked="{Binding IsTemperatureWorking, Mode=TwoWay}">
+                            <Grid>
+                                <Grid Width="32" Height="32" Visibility="Collapsed" />
+                                <Path Data="M8,5C8.552,5,9,5.448,9,6L9,22.091705 9.0839787,22.130606C9.9219227,22.544302 10.5,23.422684 10.5,24.438997 10.5,25.852999 9.3809996,27 8,27 6.619,27 5.5,25.852999 5.5,24.438997 5.5,23.422684 6.0780773,22.544302 6.9160209,22.130606L7,22.091705 7,6C7,5.448,7.448,5,8,5z M7.8910217,2C6.2430115,2,4.9990234,3.2339935,4.9990234,4.8710022L4.9990234,19.052994 4.5570068,19.444C2.9320068,20.533997 2,22.263 2,24.186996 2,27.391998 4.7019958,30 8.0230103,30 11.375,30 14,27.445999 14,24.186996 14,22.164993 13.100006,20.481995 11.466003,19.449005L11,19.154007 11,4.8710022C11,3.3139954,9.5760193,2,7.8910217,2z M7.8910217,0C10.708008,0,13,2.1849976,13,4.8710022L13,18.076996C14.914001,19.492996 16,21.688995 16,24.186996 16,28.494995 12.421997,32 8.0230103,32 3.598999,32 0,28.494995 0,24.186996 0,21.804001 1.1119995,19.567993 3,18.102997L2.9990234,4.8710022C2.9990234,2.1399994,5.1480103,0,7.8910217,0z"
+                                      Stretch="Uniform"
+                                      Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}"
+                                      Width="16" Height="16" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" />
+                            </Grid>
+                        </ToggleButton>
+
+                        <ToggleButton HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Width="32"    Height="32"
+                                      Style="{DynamicResource MetroCircleToggleButtonStyle}"
+                                      IsChecked="{Binding IsHumidityWorking, Mode=TwoWay}">
+                            <Grid>
+                                <Grid Width="32" Height="32" Visibility="Collapsed" />
+                                <Path Data="M10.058927,10.900028C11.158908,13.400034 9.8589301,15.200039 9.8589301,15.200039 9.5589354,15.900041 9.4589369,16.400042 9.4589369,16.400042 9.058944,19.200049 11.158908,19.60005 11.158908,19.60005 13.258872,19.90005 13.758863,17.800045 13.758863,17.800045 14.958843,14.300036 10.058927,10.900028 10.058927,10.900028z M2.3590581,0C2.3590584,0 21.958723,12.300032 17.4588,25.500064 17.4588,25.500065 15.358836,32.900083 7.0589778,31.900081 7.0589781,31.900081 -1.24088,30.500077 0.15909624,20.200051 0.15909624,20.200051 0.35909271,18.400047 1.6590705,15.80004 1.6590705,15.80004 6.5589866,8.6000223 2.3590581,0z"
+                                      Stretch="Uniform"
+                                      Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}"
+                                      Width="16" Height="16" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" />
+                            </Grid>
+                        </ToggleButton>
+
+                        <ToggleButton HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Width="32"    Height="32"
+                                      Style="{DynamicResource MetroCircleToggleButtonStyle}"
+                                      IsChecked="{Binding IsBarometerWorking, Mode=TwoWay}">
+                            <Grid>
+                                <Grid Width="32" Height="32" Visibility="Collapsed" />
+                                <Path Data="M4.7159762,14.793012C5.2519755,14.793012 5.6859751,15.227006 5.6859751,15.762999 5.6859751,16.297992 5.2519755,16.731986 4.7159762,16.731986 4.1799769,16.731986 3.7459776,16.297992 3.7459774,15.762999 3.7459776,15.227006 4.1799769,14.793012 4.7159762,14.793012z M25.697008,14.441995C26.233007,14.441995 26.667007,14.875996 26.667007,15.410996 26.667007,15.946998 26.233007,16.381 25.697008,16.381 25.161009,16.381 24.727011,15.946998 24.727011,15.410996 24.727011,14.875996 25.161009,14.441995 25.697008,14.441995z M16,12.601998L14.248991,18.308991 16,20.118989 17.751009,18.308991z M6.2530789,9.2403326C6.4093571,9.2444067 6.5669227,9.2864485 6.7118936,9.3701801 7.1757998,9.6381226 7.3347673,10.230993 7.0668216,10.693892 6.7988758,11.157791 6.205996,11.316756 5.7430892,11.048815 5.2791834,10.781873 5.1202154,10.189002 5.3881612,9.7251034 5.5716863,9.4061728 5.9092665,9.2313709 6.2530789,9.2403326z M25.747288,9.2403278C26.090841,9.2313662 26.428637,9.406167 26.61285,9.7250977 26.880796,10.187997 26.721828,10.780868 26.257923,11.04881 25.794016,11.316751 25.201136,11.157785 24.934191,10.693887 24.666245,10.229988 24.825212,9.6371174 25.289118,9.3701754 25.433777,9.2864437 25.591127,9.2444019 25.747288,9.2403278z M16,5.9910069L19.941021,18.834991 16,22.907985 12.058979,18.834991z M21.668095,5.1753445C21.824377,5.1794486 21.981947,5.2214894 22.126923,5.3052201 22.590843,5.5721574 22.749815,6.165019 22.481861,6.6289105 22.213907,7.092802 21.621008,7.2517653 21.158087,6.9838276 20.694166,6.7158904 20.535194,6.1230288 20.803148,5.6591373 20.986679,5.340899 21.32427,5.1663146 21.668095,5.1753445z M10.33225,5.174324C10.675804,5.1653619 11.013599,5.3401608 11.197812,5.6590862 11.465757,6.1229777 11.306789,6.7158394 10.842883,6.9827771 10.378977,7.2507143 9.7860975,7.0917516 9.5191507,6.6288595 9.2512054,6.164968 9.4101734,5.5721068 9.8740797,5.3041692 10.018738,5.220439 10.176088,5.1783977 10.33225,5.174324z M15.999987,3.6869845C16.535978,3.6869843 16.969973,4.1209903 16.969973,4.6569982 16.969973,5.193006 16.535978,5.6270123 15.999987,5.6270123 15.464993,5.6270123 15.030999,5.193006 15.030999,4.6569982 15.030999,4.1209903 15.464993,3.6869843 15.999987,3.6869845z M16,0C24.822998,-4.5496404E-07 32,7.071012 32,15.762996 32,20.110009 30.138,24.310996 26.890015,27.29L25.579041,25.860984C28.469055,23.210015 30.061035,19.62301 30.061035,15.762996 30.061035,8.1400118 23.753052,1.9389943 16,1.9389944 8.2470093,1.9389943 1.9400024,8.1400118 1.9400024,15.762996 1.9400024,19.62301 3.5320435,23.210015 6.4210205,25.860984L5.1110229,27.29C1.8630371,24.310996 0,20.110009 0,15.762996 0,7.071012 7.1780396,-4.5496404E-07 16,0z"
+                                      Stretch="Uniform"
+                                      Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}"
+                                      Width="16" Height="16" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" />
+                            </Grid>
+                        </ToggleButton>
+                    </StackPanel>
+
+                    <Button Grid.Column="1"     Grid.Row="0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Style="{StaticResource MetroCircleButtonStyle}"
+                            Width="32"  Height="32"
+                            Command="{Binding RefreshStatus}">
+                        <Grid>
+                            <Grid Width="32" Height="32" Visibility="Collapsed" />
+                            <Path Data="M1.6819987,14.044979L9.8970004,17.370966 6.3769976,19.284967C8.2400037,22.789972 11.896001,25.193962 16.141995,25.193962 20.631998,25.193962 24.487993,22.521967 26.233004,18.687982L29.466995,18.687982C27.558001,24.216972 22.313997,28.208 16.141995,28.208 10.761998,28.208 6.0890032,25.17498 3.7130042,20.731012L0,22.747003z M16.141995,0C21.460993,1.3985937E-07,26.084002,2.9670097,28.485001,7.3259868L32,5.3049912 30.530991,14.044979 22.236994,10.916013 25.860003,8.8339815C23.983004,5.3789963 20.351999,3.0140068 16.141995,3.0140066 11.653997,3.0140068 7.7980023,5.6860031 6.0520006,9.518979L2.8189999,9.518979C4.7280031,3.9899892,9.9719973,1.3985937E-07,16.141995,0z"
+                                  Stretch="Uniform"
+                                  Fill="{DynamicResource BlackBrush}"
+                                  Width="16" Height="16" Margin="0,0,0,0"
+                                  RenderTransformOrigin="0.5,0.5" />
+                        </Grid>
+                    </Button>
+
+                    <TextBox x:Name="textBoxDescription"
+                             Grid.Column="0"
+                             Grid.Row="1"
+                             Margin="0,8,0,8"
+                             VerticalAlignment="Stretch"
+                             HorizontalAlignment="Stretch"
+                             TextWrapping="Wrap"
+                             AcceptsReturn="True"
+                             Controls:TextBoxHelper.Watermark="Nội dung báo cáo..."
+                             Text="{Binding Description, Mode=TwoWay}" />
+                    <Button Grid.Column="1"     Grid.Row="1"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Style="{StaticResource MetroCircleButtonStyle}"
+                            Width="52"  Height="52"
+                            IsEnabled="{Binding Text, Converter={StaticResource GreaterThanZero}, ElementName=textBoxDescription}"
+                            Command="{Binding SendStatus}">
+                        <Grid>
+                            <Grid Width="52" Height="52" Visibility="Collapsed" />
+                            <Path Data="M0,9.3850001L6.3940004,9.3850001 6.3940004,10.439015 0,10.439015z M17.004999,8.3619908L20.257997,10.961963 23.508996,8.3619908 31.752998,13.351 8.7609972,13.351z M0,5.893976L6.3940004,5.893976 6.3940004,6.9479907 0,6.9479907z M0,2.4039892L6.3940004,2.4039892 6.3940004,3.4580043 0,3.4580043z M31.999999,1.2849717L31.999999,12.129016 24.259996,7.4310225z M8.7609972,1.2849717L16.500001,7.4310225 8.7609972,12.129016z M8.7609972,0L31.752998,0 20.257997,9.1979883z"
+                                  Stretch="Uniform"
+                                  Fill="{DynamicResource BlackBrush}"
+                                  Width="22" Height="22" Margin="0,0,0,0"
+                                  RenderTransformOrigin="0.5,0.5" />
+                        </Grid>
+                    </Button>
+                </Grid>
+
+                <!--seperator-->
+                <!--<Rectangle Grid.Row="1"
+                           Margin="16,0,16,0"
+                           VerticalAlignment="Stretch"
+                           HorizontalAlignment="Stretch"
+                           Fill="{DynamicResource AccentColorBrush}" />-->
+
+                <ListView Grid.Row="2"
+                          Margin="8"
+                          SelectionMode="Extended"
+                          ItemsSource="{Binding Statuss}">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="1"
+                        BorderBrush="{DynamicResource AccentColorBrush}"
+                        Grid.Row="2"
+                        Height="128"
+                        Margin="8"
+                                    IsEnabled="False">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30" />
+                                        <RowDefinition Height="1" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding Time}"
+                                       Margin="8,0,0,0" />
+                                        <TextBlock Text="{Binding StatusId}"
+                                       Grid.Column="1"
+                                       HorizontalAlignment="Center" />
+                                        <StackPanel Orientation="Horizontal"
+                                        Grid.Column="2"
+                                        HorizontalAlignment="Right"
+                                        Margin="0,0,8,0">
+                                            <ToggleButton HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Width="24"    Height="24"
+                                      Style="{DynamicResource MetroCircleToggleButtonStyle}"
+                                      IsChecked="{Binding IsTemperatureWorking}">
+                                                <Grid>
+                                                    <Grid Width="24" Height="24" Visibility="Collapsed" />
+                                                    <Path Data="M8,5C8.552,5,9,5.448,9,6L9,22.091705 9.0839787,22.130606C9.9219227,22.544302 10.5,23.422684 10.5,24.438997 10.5,25.852999 9.3809996,27 8,27 6.619,27 5.5,25.852999 5.5,24.438997 5.5,23.422684 6.0780773,22.544302 6.9160209,22.130606L7,22.091705 7,6C7,5.448,7.448,5,8,5z M7.8910217,2C6.2430115,2,4.9990234,3.2339935,4.9990234,4.8710022L4.9990234,19.052994 4.5570068,19.444C2.9320068,20.533997 2,22.263 2,24.186996 2,27.391998 4.7019958,30 8.0230103,30 11.375,30 14,27.445999 14,24.186996 14,22.164993 13.100006,20.481995 11.466003,19.449005L11,19.154007 11,4.8710022C11,3.3139954,9.5760193,2,7.8910217,2z M7.8910217,0C10.708008,0,13,2.1849976,13,4.8710022L13,18.076996C14.914001,19.492996 16,21.688995 16,24.186996 16,28.494995 12.421997,32 8.0230103,32 3.598999,32 0,28.494995 0,24.186996 0,21.804001 1.1119995,19.567993 3,18.102997L2.9990234,4.8710022C2.9990234,2.1399994,5.1480103,0,7.8910217,0z"
+                                      Stretch="Uniform"
+                                      Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}"
+                                      Width="12" Height="12" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" />
+                                                </Grid>
+                                            </ToggleButton>
+
+                                            <ToggleButton HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Width="24"    Height="24"
+                                      Style="{DynamicResource MetroCircleToggleButtonStyle}"
+                                      IsChecked="{Binding IsHumidityWorking}">
+                                                <Grid>
+                                                    <Grid Width="24" Height="24" Visibility="Collapsed" />
+                                                    <Path Data="M10.058927,10.900028C11.158908,13.400034 9.8589301,15.200039 9.8589301,15.200039 9.5589354,15.900041 9.4589369,16.400042 9.4589369,16.400042 9.058944,19.200049 11.158908,19.60005 11.158908,19.60005 13.258872,19.90005 13.758863,17.800045 13.758863,17.800045 14.958843,14.300036 10.058927,10.900028 10.058927,10.900028z M2.3590581,0C2.3590584,0 21.958723,12.300032 17.4588,25.500064 17.4588,25.500065 15.358836,32.900083 7.0589778,31.900081 7.0589781,31.900081 -1.24088,30.500077 0.15909624,20.200051 0.15909624,20.200051 0.35909271,18.400047 1.6590705,15.80004 1.6590705,15.80004 6.5589866,8.6000223 2.3590581,0z"
+                                      Stretch="Uniform"
+                                      Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}"
+                                      Width="12" Height="12" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" />
+                                                </Grid>
+                                            </ToggleButton>
+
+                                            <ToggleButton HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Width="24"    Height="24"
+                                      Style="{DynamicResource MetroCircleToggleButtonStyle}"
+                                      IsChecked="{Binding IsBarometerWorking}">
+                                                <Grid>
+                                                    <Grid Width="24" Height="24" Visibility="Collapsed" />
+                                                    <Path Data="M4.7159762,14.793012C5.2519755,14.793012 5.6859751,15.227006 5.6859751,15.762999 5.6859751,16.297992 5.2519755,16.731986 4.7159762,16.731986 4.1799769,16.731986 3.7459776,16.297992 3.7459774,15.762999 3.7459776,15.227006 4.1799769,14.793012 4.7159762,14.793012z M25.697008,14.441995C26.233007,14.441995 26.667007,14.875996 26.667007,15.410996 26.667007,15.946998 26.233007,16.381 25.697008,16.381 25.161009,16.381 24.727011,15.946998 24.727011,15.410996 24.727011,14.875996 25.161009,14.441995 25.697008,14.441995z M16,12.601998L14.248991,18.308991 16,20.118989 17.751009,18.308991z M6.2530789,9.2403326C6.4093571,9.2444067 6.5669227,9.2864485 6.7118936,9.3701801 7.1757998,9.6381226 7.3347673,10.230993 7.0668216,10.693892 6.7988758,11.157791 6.205996,11.316756 5.7430892,11.048815 5.2791834,10.781873 5.1202154,10.189002 5.3881612,9.7251034 5.5716863,9.4061728 5.9092665,9.2313709 6.2530789,9.2403326z M25.747288,9.2403278C26.090841,9.2313662 26.428637,9.406167 26.61285,9.7250977 26.880796,10.187997 26.721828,10.780868 26.257923,11.04881 25.794016,11.316751 25.201136,11.157785 24.934191,10.693887 24.666245,10.229988 24.825212,9.6371174 25.289118,9.3701754 25.433777,9.2864437 25.591127,9.2444019 25.747288,9.2403278z M16,5.9910069L19.941021,18.834991 16,22.907985 12.058979,18.834991z M21.668095,5.1753445C21.824377,5.1794486 21.981947,5.2214894 22.126923,5.3052201 22.590843,5.5721574 22.749815,6.165019 22.481861,6.6289105 22.213907,7.092802 21.621008,7.2517653 21.158087,6.9838276 20.694166,6.7158904 20.535194,6.1230288 20.803148,5.6591373 20.986679,5.340899 21.32427,5.1663146 21.668095,5.1753445z M10.33225,5.174324C10.675804,5.1653619 11.013599,5.3401608 11.197812,5.6590862 11.465757,6.1229777 11.306789,6.7158394 10.842883,6.9827771 10.378977,7.2507143 9.7860975,7.0917516 9.5191507,6.6288595 9.2512054,6.164968 9.4101734,5.5721068 9.8740797,5.3041692 10.018738,5.220439 10.176088,5.1783977 10.33225,5.174324z M15.999987,3.6869845C16.535978,3.6869843 16.969973,4.1209903 16.969973,4.6569982 16.969973,5.193006 16.535978,5.6270123 15.999987,5.6270123 15.464993,5.6270123 15.030999,5.193006 15.030999,4.6569982 15.030999,4.1209903 15.464993,3.6869843 15.999987,3.6869845z M16,0C24.822998,-4.5496404E-07 32,7.071012 32,15.762996 32,20.110009 30.138,24.310996 26.890015,27.29L25.579041,25.860984C28.469055,23.210015 30.061035,19.62301 30.061035,15.762996 30.061035,8.1400118 23.753052,1.9389943 16,1.9389944 8.2470093,1.9389943 1.9400024,8.1400118 1.9400024,15.762996 1.9400024,19.62301 3.5320435,23.210015 6.4210205,25.860984L5.1110229,27.29C1.8630371,24.310996 0,20.110009 0,15.762996 0,7.071012 7.1780396,-4.5496404E-07 16,0z"
+                                      Stretch="Uniform"
+                                      Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}"
+                                      Width="12" Height="12" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" />
+                                                </Grid>
+                                            </ToggleButton>
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <!--seperator-->
+                                    <Rectangle Grid.Row="1"
+                           Margin="16,0,16,0"
+                           VerticalAlignment="Stretch"
+                           HorizontalAlignment="Stretch"
+                           Fill="{DynamicResource AccentColorBrush}" />
+
+                                    <TextBlock Grid.Row="2"
+                                   Margin="8"
+                                   TextWrapping="Wrap"
+                                   Text="{Binding Description}" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Thông Tin">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="60" />
+                </Grid.RowDefinitions>
+                <ScrollViewer Margin="8">
+                    <StackPanel Margin="8">
+                        <StackPanel.Resources>
+                            <Style x:Key="inforTitle" TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Right" />
+                                <Setter Property="FontSize" Value="16" />
+                                <Setter Property="Margin" Value="2" />
+                            </Style>
+                            <Style x:Key="inforValue" TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Left" />
+                                <Setter Property="FontSize" Value="16" />
+                                <Setter Property="Grid.Column" Value="2" />
+                                <Setter Property="Margin" Value="2" />
+                            </Style>
+                        </StackPanel.Resources>
+                        <StackPanel>
+
+                            <!--Sperator-->
+                            <Rectangle Height="1"
+                                   Margin="16,8,16,8"
+                                   VerticalAlignment="Stretch"
+                                   HorizontalAlignment="Stretch"
+                                   Fill="{DynamicResource AccentColorBrush}" />
+                            <TextBlock FontSize="24" Text="Trạm" />
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="16" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Style="{StaticResource inforTitle}"
+                                   Text="Mã Trạm:" />
+                                <TextBlock Style="{StaticResource inforValue}"
+                                   Text="{Binding Station.StationId}" />
+
+                                <TextBlock Style="{StaticResource inforTitle}"
+                                   Grid.Row="1"
+                                   Text="Tên Trạm:" />
+                                <TextBlock Style="{StaticResource inforValue}"
+                                   Grid.Row="1"
+                                   Text="{Binding Station.Name}" />
+
+                                <TextBlock Style="{StaticResource inforTitle}"
+                                   Grid.Row="2"
+                                   Text="Khoảng Cách:" />
+                                <TextBlock Style="{StaticResource inforValue}"
+                                   Grid.Row="2"
+                                   Text="{Binding Station.Distance}" />
+                            </Grid>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <!--Sperator-->
+                            <Rectangle Height="1"
+                                   Margin="16,8,16,8"
+                                   VerticalAlignment="Stretch"
+                                   HorizontalAlignment="Stretch"
+                                   Fill="{DynamicResource AccentColorBrush}" />
+
+                            <TextBlock FontSize="24" Text="Nhân Viên" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="16" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Style="{StaticResource inforTitle}"
+                                   Text="Mã Nhân Viên:" />
+                                <TextBlock Style="{StaticResource inforValue}"
+                                   Text="{Binding Station.Staff.StaffId}" />
+
+                                <TextBlock Style="{StaticResource inforTitle}"
+                                   Grid.Row="1"
+                                   Text="Tên Nhân Viên:" />
+                                <TextBlock Style="{StaticResource inforValue}"
+                                   Grid.Row="1"
+                                   Text="{Binding Station.Staff.FullName}" />
+
+                                <TextBlock Style="{StaticResource inforTitle}"
+                                   Grid.Row="2"
+                                   Text="Ngày Sinh:" />
+                                <TextBlock Style="{StaticResource inforValue}"
+                                   Grid.Row="2"
+                                   Text="{Binding Station.Staff.Birthdate, StringFormat=dd/MM/yyyy}" />
+
+                                <TextBlock Style="{StaticResource inforTitle}"
+                                   Grid.Row="3"
+                                   Text="Địa Chỉ Thường Trú:" />
+                                <TextBlock Style="{StaticResource inforValue}"
+                                   Grid.Row="3"
+                                   Text="{Binding Station.Staff.PermanentAddress}" />
+
+                                <TextBlock Style="{StaticResource inforTitle}"
+                                   Grid.Row="4"
+                                   Text="Chứng Minh Nhân Dân:" />
+                                <TextBlock Style="{StaticResource inforValue}"
+                                   Grid.Row="4"
+                                   Text="{Binding Station.Staff.Identity}" />
+
+                                <TextBlock Style="{StaticResource inforTitle}"
+                                   Grid.Row="5"
+                                   Text="Lương:" />
+                                <TextBlock Style="{StaticResource inforValue}"
+                                   Grid.Row="5"
+                                   Text="{Binding Station.Staff.Salary}" />
+
+                                <TextBlock Style="{StaticResource inforTitle}"
+                                   Grid.Row="6"
+                                   Text="Ngày Tuyển Dụng:" />
+                                <TextBlock Style="{StaticResource inforValue}"
+                                   Grid.Row="6"
+                                   Text="{Binding Station.Staff.RecruitmentDate, StringFormat=dd/MM/yyyy}" />
+                            </Grid>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <!--Sperator-->
+                            <Rectangle Height="1"
+                                   Margin="16,8,16,8"
+                                   VerticalAlignment="Stretch"
+                                   HorizontalAlignment="Stretch"
+                                   Fill="{DynamicResource AccentColorBrush}" />
+
+                            <TextBlock FontSize="24" Text="Khu Vực" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="16" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Style="{StaticResource inforTitle}"
+                                   Text="Mã Khu Vực:" />
+                                <TextBlock Style="{StaticResource inforValue}"
+                                   Text="{Binding Station.Region.RegionId}" />
+
+                                <TextBlock Style="{StaticResource inforTitle}"
+                                   Grid.Row="1"
+                                   Text="Khu Vực:" />
+                                <TextBlock Style="{StaticResource inforValue}"
+                                   Grid.Row="1"
+                                   Text="{Binding Station.Region.Name}" />
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <Button Grid.Row="1"
+                        Width="48" Height="48"
+                        Style="{DynamicResource MetroCircleButtonStyle}"
+                        Command="{Binding RefreshInfo}">
+                    <Grid>
+                        <Grid Width="48" Height="48" Visibility="Collapsed" />
+                        <Path Data="M1.6819987,14.044979L9.8970004,17.370966 6.3769976,19.284967C8.2400037,22.789972 11.896001,25.193962 16.141995,25.193962 20.631998,25.193962 24.487993,22.521967 26.233004,18.687982L29.466995,18.687982C27.558001,24.216972 22.313997,28.208 16.141995,28.208 10.761998,28.208 6.0890032,25.17498 3.7130042,20.731012L0,22.747003z M16.141995,0C21.460993,1.3985937E-07,26.084002,2.9670097,28.485001,7.3259868L32,5.3049912 30.530991,14.044979 22.236994,10.916013 25.860003,8.8339815C23.983004,5.3789963 20.351999,3.0140068 16.141995,3.0140066 11.653997,3.0140068 7.7980023,5.6860031 6.0520006,9.518979L2.8189999,9.518979C4.7280031,3.9899892,9.9719973,1.3985937E-07,16.141995,0z"
+                                      Stretch="Uniform"
+                                      Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"
+                                      Width="26" Height="26" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" />
+                    </Grid>
+                </Button>
+            </Grid>
+        </TabItem>
+    </Controls:MetroAnimatedTabControl>
+</Controls:MetroWindow>

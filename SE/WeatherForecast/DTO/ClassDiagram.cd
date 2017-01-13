@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DTO.CentreDTO">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CentreDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.JobHistoryDTO" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAACAAAAAAAAAAgACAAAABCAAAAAEAAAAA=</HashCode>
+      <FileName>JobHistoryDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.RegionDTO" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAgAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RegionDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.StaffDTO" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAACAAAAAACIAACAAAACQAAAAAAABCAEAAAAAAAAA=</HashCode>
+      <FileName>StaffDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.StationDTO">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEgAAAgAAAAACAAAAAACQAACAAAABCAAAAAAAAAAA=</HashCode>
+      <FileName>StationDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.StatusDTO" Collapsed="true">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAiAAIAAAgAAAAEEAAEAAAAAAAAAAAAEAAAAAAAQA=</HashCode>
+      <FileName>StatusDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.WeatherDataDTO" Collapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAgAAAAAAAAAAAEAACAAAAAAAAAAAAAAEAAAAEAQA=</HashCode>
+      <FileName>WeatherDataDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

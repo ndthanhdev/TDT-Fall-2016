@@ -1,0 +1,18 @@
+﻿<controls:FlyoutsControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:local="clr-namespace:CentreGUI.Views">
+    <controls:Flyout
+        Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=controls:FlyoutsControl}, Path=ActualWidth, Mode=OneWay}"
+        AnimateOpacity="True"
+        CloseButtonIsCancel="True"
+        Header="New Goodness"
+        IsOpen="True"
+        Position="Right">
+        <StackPanel Margin="10" Orientation="Vertical">
+            <Button Content="create" />
+            <Button Content="cancel" />
+        </StackPanel>
+    </controls:Flyout>
+</controls:FlyoutsControl>
